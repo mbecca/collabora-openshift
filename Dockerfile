@@ -25,6 +25,7 @@ ADD entrypoint.sh /
 COPY loolwsd.xml /etc/loolwsd/loolwsd.xml
 
 USER 1001
+EXPOSE 9980
 
 ENTRYPOINT ["dumb-init", "/entrypoint.sh"]
 CMD ["loolwsd"]
