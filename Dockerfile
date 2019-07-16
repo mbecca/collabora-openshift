@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM openshift/base-centos7
 
 # Install Collabora, libmapuid and dumb-init
 RUN yum -y --setopt=tsflags=nodocs install wget openssl && \
