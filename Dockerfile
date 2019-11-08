@@ -20,13 +20,10 @@ RUN mkdir /home/lool && \
     chgrp -R 0 $directories && \
     chmod -R g=u $directories
 
-RUN chown root:1001 -R /usr/bin
-
-
 ADD entrypoint.sh /
 COPY loolwsd.xml /etc/loolwsd/loolwsd.xml
 
-USER 1001
+
 EXPOSE 9980
 
 ENTRYPOINT ["dumb-init", "/entrypoint.sh"]
