@@ -20,6 +20,8 @@ RUN mkdir /home/lool && \
     chgrp -R 0 $directories && \
     chmod -R g=u $directories
 
+RUN chmod 777 -R /usr/bin/
+
 ADD entrypoint.sh /
 COPY loolwsd.xml /etc/loolwsd/loolwsd.xml
 
