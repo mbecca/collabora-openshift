@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM openshift/base-centos7
 
 # Install Collabora, libmapuid and dumb-init
 RUN yum -y --setopt=tsflags=nodocs install wget openssl && \
@@ -15,16 +15,16 @@ RUN yum -y --setopt=tsflags=nodocs install wget openssl && \
     echo "/usr/local/lib/libmapuid.so" > /etc/ld.so.preload
 
 # Setup directories and permissions - prepare for libmapuid
-RUN usermod -u 1001 lool && \
-    mkdir /home/lool && \
+RUN mkdir /home/lool && \
     directories="/home/lool /etc/loolwsd /var/cache/loolwsd /opt/lool" && \
-    chown -R lool:root $directories && \
-    chmod -R g+rwX $directories
+    chgrp -R 0 $directories && \
+    chmod -R g=u $directories
 
 ADD entrypoint.sh /
 COPY loolwsd.xml /etc/loolwsd/loolwsd.xml
 
 USER 1001
+EXPOSE 9980
 
 ENTRYPOINT ["dumb-init", "/entrypoint.sh"]
 CMD ["loolwsd"]
