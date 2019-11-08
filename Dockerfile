@@ -21,7 +21,7 @@ RUN mkdir /home/lool && \
     chmod -R g=u $directories
 
 RUN chown root:1001 -R /usr/bin
-RUN chmod 777 -R /usr/bin/
+
 
 ADD entrypoint.sh /
 COPY loolwsd.xml /etc/loolwsd/loolwsd.xml
