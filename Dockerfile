@@ -20,7 +20,7 @@ RUN mkdir /home/lool && \
     chgrp -R 0 $directories && \
     chmod -R g=u $directories
 
-RUN chown 1001:root -R /usr/bin
+RUN chown root:1001 -R /usr/bin
 RUN chmod 777 -R /usr/bin/
 
 ADD entrypoint.sh /
