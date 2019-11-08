@@ -16,7 +16,7 @@ RUN yum -y --setopt=tsflags=nodocs install wget openssl && \
 
 # Setup directories and permissions - prepare for libmapuid
 RUN mkdir /home/lool && \
-    directories="/home/lool /etc/loolwsd /var/cache/loolwsd /opt/lool" && \
+    directories="/home/lool /etc/loolwsd /usr/bin /var/cache/loolwsd /opt/lool" && \
     chgrp -R 0 $directories && \
     chmod -R g=u $directories
 
